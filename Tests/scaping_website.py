@@ -51,8 +51,9 @@ def giant_process(list):
     """This is the big process where i have to scrap"""
     page_url = BASE_URL + list[3]
 
-    soup = proxy_request(page_url)
-    print(soup)
+    print(page_url)
+    # soup = proxy_request(page_url)
+    # print(soup)
 
 
     """
