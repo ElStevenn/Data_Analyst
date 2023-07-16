@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 from setuptools import setup, find_packages
-import sys
-import os
+import sys, os
 
 def read(filename):
     filepath = os.path.join(os.path.dirname(__file__), filename)
