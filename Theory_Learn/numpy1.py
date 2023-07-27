@@ -44,7 +44,7 @@ array_contcat = np.concatenate((arA, arB))
 arA = np.array([[1, 2], [3, 4]])
 arB = np.array([[5, 6]])
 array_contcat = np.concatenate((arA, arB), axis=0)
-print(array_contcat)
+# print(array_contcat)
 
 """This way i can create a numbered array without use a loop inside an array"""
 x2 = np.arange(15, dtype=np.int64).reshape(3, 5) 
@@ -77,5 +77,36 @@ mat2 = np.array([[5, 6], [7, 8]])
 
 
 
+"""Revising these things about reshape and Transpose"""
+
+# Reshape
+a1 = np.array([
+    [[1, 2, 3, 4],[5, 6, 7, 8],[9, 10, 11, 12]],
+    [[13, 14, 15, 16],[17, 18, 19, 20],[21, 22, 23, 24]]
+])
+
+
+
+a2 = np.array([3, 7, 3, 8, 12, 2, 5, 9, 3, 10, 6, 9])
+
+a2_ = a2.reshape(len(a1[1]), 4)
+a2_ * a1
+
+
+
+# Transpose() | Transpose literally switches the axis
+
+a1.shape # Output -> (2, 3, 4)
+a1.transpose().shape # Output -> (4, 3, 2)1
+
+# We can do this in a larger array as well:
+b1 = np.array([
+    [[1, 2, 3, 4],[5, 6, 7, 8],[9, 10, 11, 12]],
+    [[13, 14, 15, 16],[17, 18, 19, 20],[21, 22, 23, 24]]
+])
+
+
+print(b1.shape)
+print(b1.T.shape)
 
 
