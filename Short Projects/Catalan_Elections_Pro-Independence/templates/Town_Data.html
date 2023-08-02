@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ town_name }} votes</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="In this page I try to showthedata here">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="display: flex;">
+        <button><a href="{{ url_for('main') }}">Go back</a></button>
+        <h1>Here I'll show you the town data</h1>
+    </div>
+    <div>
+        <h2>Total Votes: {{ total_votes }}</h2>
+        <h2>{{ town_name }}:</h2>
+    </div>
+    
+
+    <div>
+        <ul>
+            {% for party_votes in party_results %}
+                <li>{{ party_votes }}</li>
+
+
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

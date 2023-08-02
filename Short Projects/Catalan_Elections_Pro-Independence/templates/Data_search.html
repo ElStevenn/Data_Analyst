@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Town Search</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="In this page I try to showthedata here">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Town searh</h1>
+
+    <!-- Here is where the user have to search their town -->
+    <form method="post">
+        <label for="town_search">Search your town:</label>
+        <input type="search" class="search" id="town_search" name="town_data" placeholder="Search">
+
+        <input type="submit" value="GO" name="wtf_">
+    </form>
+
+</body>
+</html>

@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
+
 URL_BASE = "https://resultados.elpais.com/elecciones/2021/autonomicas/09/"
 html = ".html"
 
@@ -17,7 +18,7 @@ class extract_party_data:
     """Class where I get a dictionary with province data. The objective is get all party votes, sum of all votes and town's name."""
     Data_Dic = []
 
-    def __init__(self, province = None, print_values = False):
+    def __init__(self, province = None, print_values = False, encodig = "utf-8"):
         """Get province ID"""
         if province.lower() == "barcelona":
             self.Province = (URL_BASE + "08", URL_BASE + "08" + html)
@@ -32,6 +33,7 @@ class extract_party_data:
         
         self.print_values = print_values
         self.Province_name = province.title()
+        self.encofig = encodig
 
         self.extract_data_and_filter()
 
@@ -105,7 +107,8 @@ class extract_party_data:
 
 
         for cont in tqdm(range(cont, 310), desc=f"Extracting {self.Province_name} data"):
-            response = requests.get(self.Province[0] + self.filt_counter(cont) + html)
+            response = requests.get(self.Province[0] + self.filt_counter(cont) + html, )
+            response.encoding = self.encofig
 
             if response.status_code == 404:
                 continue
@@ -141,5 +144,23 @@ class extract_party_data:
            
 
 if __name__ == "__main__":
-    Barcelona_Provinces = extract_party_data("barcelona")
-    print(Barcelona_Provinces)
+    import pandas as pd
+    import os
+    os.system('cls')
+    """
+    lleida_towns = extract_party_data("lleida")
+
+    # Put the data in the Dataframe
+    print("**********************************************")
+    MyDataframe = pd.DataFrame(lleida_towns.Data_Dic).set_index('town_name')
+    print(MyDataframe.head(10))
+
+    MyDataframe.to_csv(os.getcwd() + '/csv_data/lleida_data.csv', encoding="utf-8")
+    """
+    Lleida_data = pd.read_csv(os.getcwd()+ "/csv_data/lleida_data.csv")
+    print(Lleida_data.loc[Lleida_data["town_name"] == "Cubells"])
+
+    pd
+   
+
+    
