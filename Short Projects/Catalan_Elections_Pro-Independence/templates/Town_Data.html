@@ -7,25 +7,40 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div class="display: flex;">
-        <button><a href="{{ url_for('main') }}">Go back</a></button>
-        <h1>Here I'll show you the town data</h1>
+    <a href="{{ url_for('main') }}"><- Go back</a>
+    <div class="general_div_results">
+        <div class="top_div">
+            <h1 class="title_townname">>> {{ town_name }} <<</h1>
+        </div>
+        <div class="middle_div">
+            <h2>Total Votes: <b>{{ total_votes }}</b></h2>
+            <h2>Results of parties in {{ town_name }}:</h2>
+        </div>
+        
+        
+        <table>
+            <tr>
+                <td>PSC</td>
+                <td>PP</td>
+                <td>VOX</td>
+                <td>Cs</td>
+                <td>ERC</td>
+                <td>ECP</td>
+                <td>JxCat</td>
+                <td>CUP</td>
+            </tr>
+            <tr>
+                <th>{{ party_results[0] }}</th>
+                <th>{{ party_results[1] }}</th>
+                <th>{{ party_results[2] }}</th>
+                <th>{{ party_results[3] }}</th>
+                <th>{{ party_results[4] }}</th>
+                <th>{{ party_results[5] }}</th>
+                <th>{{ party_results[6] }}</th>
+                <th>{{ party_results[7] }}</th>
+            </tr>
+            
+        </table>
     </div>
-    <div>
-        <h2>Total Votes: {{ total_votes }}</h2>
-        <h2>{{ town_name }}:</h2>
-    </div>
-    
-
-    <div>
-        <ul>
-            {% for party_votes in party_results %}
-                <li>{{ party_votes }}</li>
-
-
-            {% endfor %}
-        </ul>
-    </div>
-
 </body>
 </html>

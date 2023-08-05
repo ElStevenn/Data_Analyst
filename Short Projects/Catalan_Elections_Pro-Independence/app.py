@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, redirect, request, flash
 import pandas as pd
+import numpy as np
 import os
 
 app = Flask(__name__)
@@ -8,22 +9,22 @@ town = None
 
 def search_the_town(town):
     """Returns town party info with the town"""
-    town_data_frame = pd.read_csv(os.getcwd() + "/csv_data/barcelona_data.csv", encoding='utf-8')
+    town_data_frame = pd.read_csv(os.getcwd() + "/csv_data/Town_Data.csv", encoding='utf-8')
 
     Townselected = town_data_frame[town_data_frame["town_name"] == town]
     
-    PSC = "PSC: " + str(Townselected["PSC"].values[0])
-    PP = "PP: " + str(Townselected["PP"].values[0])
-    VOX = "VOX: " + str(Townselected["VOX"].values[0])
-    Cs = "Cs: " + str(Townselected["Cs"].values[0])
-    ERC = "ERC: " + str(Townselected["ERC"].values[0])
-    ECP = "ECP: " + str(Townselected["ECP"].values[0])
-    JxCat = "JxCat: " + str(Townselected["JxCat"].values[0])
-    CUP = "CUP: " + str(Townselected["CUP"].values[0])
+    PSC = Townselected["PSC"].values[0]
+    PP = Townselected["PP"].values[0]
+    VOX = Townselected["VOX"].values[0]
+    Cs = Townselected["Cs"].values[0]
+    ERC = Townselected["ERC"].values[0]
+    ECP = Townselected["ECP"].values[0]
+    JxCat = Townselected["JxCat"].values[0]
+    CUP = Townselected["CUP"].values[0]
 
     Total_votes = int(Townselected["PSC"].values[0]) + int(Townselected["PP"].values[0]) + int(Townselected["VOX"].values[0]) + int(Townselected["Cs"].values[0]) + int(Townselected["ERC"].values[0]) + int(Townselected["ECP"].values[0]) + int(Townselected["JxCat"].values[0]) + int(Townselected["CUP"].values[0])
 
-    return [PSC, PP, VOX, Cs, ERC, ECP, JxCat, CUP], Total_votes
+    return np.array([PSC, PP, VOX, Cs, ERC, ECP, JxCat, CUP]), Total_votes
 
 
 @app.route('/', methods = ["GET", "POST"])

@@ -1,0 +1,84 @@
+body{
+    background-color: antiquewhite;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.general_div_results {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh; /* Added to ensure the content takes at least the full viewport height */
+   
+}
+
+.data_search_general_div{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+}
+.data_search_general_div h1{
+    color: green;
+    text-decoration: underline red;
+    letter-spacing: 0.2px;
+    font-size: 100px;
+    font-weight: bold;
+    font-size: 700;
+}
+
+.search_ {
+    width: 90%;
+    height: 35px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.letters_search{
+    font-weight: bold;
+}
+
+.top_div{
+    display: block;
+}
+
+
+a{
+    text-decoration: none;
+}
+
+table, th, td{
+    border: solid black 1px;
+    border-collapse: collapse;
+    padding: 11px;
+    font-size: 25px;
+}
+
+td{
+    background-color: gainsboro;
+    font-weight: bold;
+}
+
+th {
+    background-color: lightblue;
+}
+
+h1{
+    font-size: 26px;
+    text-decoration:hsl(from red 20 10 5);   
+}
+
+.title_townname{
+    font-family: 'Times New Roman';
+    color: rebeccapurple;
+    font-size: 56px;
+}
+
+.div_seach{
+    display: flex;
+}
