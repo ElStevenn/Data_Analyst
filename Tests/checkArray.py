@@ -29,7 +29,7 @@ print(Result)
 #
 
 myFile = pd.read_json("deviation.json")
-# print(myFile)
+print(myFile)
 np_array = np.array([])
 
 name = myFile['name'].to_numpy()
@@ -41,27 +41,28 @@ min = myFile['min'].to_numpy()
 floor_mean = myFile['floor_mean'].to_numpy()
 
 
-Enumarated_names = np.hstack((np.arange(0, len(name)), name)).reshape(len(name),2, order="f")
+# Enumarated_names = np.hstack((np.arange(0, len(name)), name)).reshape(len(name),2, order="f")
 
-rb_corners_extacted = np.hstack((np.arange(0, len(floor_mean)), floor_mean)).reshape(len(floor_mean), 2, order="f")
+# Create a numpy array with indices and floor_mean values
+floor_mean_with_indices = np.hstack((np.arange(0,len(floor_mean)), floor_mean)).reshape(len(floor_mean), 2, order="F")
 
-order_array = np.argsort(rb_corners_extacted[:,1])
+np.set_printoptions(precision=4, suppress=True) 
+order_array_indx = np.argsort(floor_mean_with_indices[:,1])
+Result = floor_mean_with_indices[order_array_indx]
 
-sorted_gt_corners = rb_corners_extacted[order_array]
-
-print(Enumarated_names)
-print(sorted_gt_corners)
-
-
-
+print(Result[:100])
 
 ##################
+
+
+
+
 """
-TheArray = np.array([[0,2],[1,5],[2,7],[3,1],[4,2]]) # The result would be: [[3,1],[0,2],[4,2],[1,5],[2,7]]
+# Order values in a simple example
+TheArray = np.hstack((np.arange(0,len(floor_mean)), floor_mean)).reshape(len(floor_mean), 2, order="F") # The result would be: [[3,1],[0,2],[4,2],[1,5],[2,7]]
 
 ordered_array = np.argsort(TheArray[:,1])
-
+np.set_printoptions(precision=4, suppress=True) 
 Final_Result = TheArray[ordered_array]
-print(Final_Result)
-# Final_Result = np.hstack((ordered_array, np.sort(TheArray[:,1]))).reshape(TheArray.shape, order="f")
+print(Final_Result)# The result is: [[3,1],[0,2],[4,2],[1,5],[2,7]] | As you see i've ordered the array from the second value
 """
