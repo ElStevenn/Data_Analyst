@@ -22,7 +22,7 @@ setup(
     keywords=['Pandas',
               'Numpy',
               'Jupyter',
-              'Notebooks',
+              'Notebook',
               'Data Cleaning',
               'Data Frames',
               'Flask'],
