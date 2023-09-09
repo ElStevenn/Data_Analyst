@@ -26,7 +26,6 @@ print(Result)
 ##########################################################################################################################
 
 
-#
 
 myFile = pd.read_json("deviation.json")
 print(myFile)
@@ -41,7 +40,7 @@ min = myFile['min'].to_numpy()
 floor_mean = myFile['floor_mean'].to_numpy()
 
 
-# Enumarated_names = np.hstack((np.arange(0, len(name)), name)).reshape(len(name),2, order="f")
+Enumarated_names = np.hstack((np.arange(0, len(name)), name)).reshape(len(name),2, order="f")
 
 # Create a numpy array with indices and floor_mean values
 floor_mean_with_indices = np.hstack((np.arange(0,len(floor_mean)), floor_mean)).reshape(len(floor_mean), 2, order="F")
@@ -51,11 +50,29 @@ order_array_indx = np.argsort(floor_mean_with_indices[:,1])
 Result = floor_mean_with_indices[order_array_indx]
 
 print(Result[:100])
-
+print(Enumarated_names[:100])
 ##################
 
 
 
+
+"""
+# Order values with this way ->
+ArrayNumeric = np.array([[3,1],[0,2],[4,2],[1,5],[2,7]])
+ArrayWithTheirNames = np.array([[0,'Pompeye'],[1,'Sugar'],[2,'Mugar'],[3,'Colombus'],[4,'Marisius']])
+
+# Extracting indices from ArrayNumeric
+indices = ArrayNumeric[:, 0].astype(int)
+
+# Using advanced indexing to get names corresponding to the indices
+names = ArrayWithTheirNames[indices, 1]
+
+# Combining indices, names, and the second column of ArrayNumeric
+Result = np.column_stack((np.arange(len(names)),indices, names, ArrayNumeric[:, 1]))
+
+
+print(Result)
+"""
 
 """
 # Order values in a simple example
