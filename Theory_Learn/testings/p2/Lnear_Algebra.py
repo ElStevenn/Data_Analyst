@@ -14,6 +14,8 @@ blue_array = img_array[:,:,2]
 
 print(green_array.max(),green_array.min())
 
+
 """
 plt.imshow(img)
-plt.show()"""
+plt.show()
+"""
